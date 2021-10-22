@@ -19,7 +19,7 @@
  * @brief 设置Misaka_RGB_Bling的GPIO引脚
  * @param  color            颜色
  */
-#include "Misaka_rgb_bling.h"
+#include "misaka_device/rgb.h"
 #include <rtthread.h>
 #include <drv_common.h>
 #include <rtdevice.h>
@@ -38,60 +38,60 @@
  * @brief                   设置RBG颜色引脚
  * @param  color            颜色
  */
-void Misaka_set_bling_pin(Misaka_RGB_Bling_Color_Enum color)
+void misaka_rgb_set_pin(misaka_rgb_color_enum color)
 {
     switch (color)
     {
-    case Misaka_RGB_Bling_Color_None:
+    case misaka_rgb_color_none:
     {
         rt_pin_write(RGB_R, PIN_LOW);
         rt_pin_write(RGB_G, PIN_LOW);
         rt_pin_write(RGB_B, PIN_LOW);
     }
     break;
-    case Misaka_RGB_Bling_Color_Red:
+    case misaka_rgb_color_red:
     {
         rt_pin_write(RGB_R, PIN_HIGH);
         rt_pin_write(RGB_G, PIN_LOW);
         rt_pin_write(RGB_B, PIN_LOW);
     }
     break;
-    case Misaka_RGB_Bling_Color_Green:
+    case misaka_rgb_color_green:
     {
         rt_pin_write(RGB_R, PIN_LOW);
         rt_pin_write(RGB_G, PIN_HIGH);
         rt_pin_write(RGB_B, PIN_LOW);
     }
     break;
-    case Misaka_RGB_Bling_Color_Blue:
+    case misaka_rgb_color_blue:
     {
         rt_pin_write(RGB_R, PIN_LOW);
         rt_pin_write(RGB_G, PIN_LOW);
         rt_pin_write(RGB_B, PIN_HIGH);
     }
     break;
-    case Misaka_RGB_Bling_Color_Yellow:
+    case misaka_rgb_color_yellow:
     {
         rt_pin_write(RGB_R, PIN_HIGH);
         rt_pin_write(RGB_G, PIN_HIGH);
         rt_pin_write(RGB_B, PIN_LOW);
     }
     break;
-    case Misaka_RGB_Bling_Color_Cyan:
+    case misaka_rgb_color_cyan:
     {
         rt_pin_write(RGB_R, PIN_LOW);
         rt_pin_write(RGB_G, PIN_HIGH);
         rt_pin_write(RGB_B, PIN_HIGH);
     }
     break;
-    case Misaka_RGB_Bling_Color_White:
+    case misaka_rgb_color_white:
     {
         rt_pin_write(RGB_R, PIN_HIGH);
         rt_pin_write(RGB_G, PIN_HIGH);
         rt_pin_write(RGB_B, PIN_HIGH);
     }
     break;
-    case Misaka_RGB_Bling_Color_Purple:
+    case misaka_rgb_color_purple:
     {
         rt_pin_write(RGB_R, PIN_HIGH);
         rt_pin_write(RGB_G, PIN_LOW);
@@ -116,7 +116,7 @@ void bling_thread_entry(void* parameter)
     while (1)
     {
         rt_thread_mdelay(100);
-        Misaka_rgb_bling_cycle_process();
+        misaka_rgb_process();
     }
 }
 
@@ -126,16 +126,16 @@ void bling_thread_entry(void* parameter)
  */
 static int bling_thread_setup(void)
 {
-    Misaka_rgb_bling_init(100);
+    misaka_rgb_init(100);
     /**
      * @brief 即为开机按照100ms的周期闪烁10次
      */
-    Misaka_rgb_bling_mode_set(Misaka_RGB_Bling_Color_Cyan,
-                              Misaka_RGB_Bling_Color_Blue,
-                              100,
-                              100,
-                              10,
-                              0);
+    misaka_rgb_mode_set(Misaka_RGB_Bling_Color_Cyan,
+                        misaka_rgb_color_blue,
+                        100,
+                        100,
+                        10,
+                        0);
     rt_thread_init(&bling_thread,
                    "bling_thread",
                    bling_thread_entry,

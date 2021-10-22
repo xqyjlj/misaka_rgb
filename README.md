@@ -29,7 +29,7 @@
 ### 初始化
 
 ```C
-void Misaka_rgb_bling_init(uint16_t time_base)
+void misaka_rgb_init(uint16_t time_base)
 ```
 
 _初始化函数_
@@ -41,8 +41,8 @@ _初始化函数_
 ### 设置工作模式
 
 ```C
-void Misaka_rgb_bling_mode_set(Misaka_RGB_Bling_Color_Enum color1,
-                           Misaka_RGB_Bling_Color_Enum color2,
+void misaka_rgb_mode_set(misaka_rgb_color_enum color1,
+                           misaka_rgb_color_enum color2,
                            uint32_t color1_time,
                            uint32_t color2_time,
                            uint16_t cnt,
@@ -63,7 +63,7 @@ _工作模式设置_
 ### 周期处理函数
 
 ```c
-void Misaka_rgb_bling_cycle_process();
+void misaka_rgb_process();
 ```
 
 _周期处理函数_
@@ -73,10 +73,10 @@ _周期处理函数_
 ### 引脚设置
 
 ```c
-void Misaka_set_bling_pin(Misaka_RGB_Bling_Color_Enum color);
+void misaka_rgb_set_pin(misaka_rgb_color_enum color);
 ```
 
-_设置RGB颜色的物理层函数_
+_设置 RGB 颜色的物理层函数_
 
 | _参数_  | _描述_ |
 | ------- | ------ |
@@ -87,15 +87,15 @@ _设置RGB颜色的物理层函数_
 ```C
 typedef enum
 {
-    Misaka_RGB_Bling_Color_None = 0,
-    Misaka_RGB_Bling_Color_Red,
-    Misaka_RGB_Bling_Color_Green,
-    Misaka_RGB_Bling_Color_Blue,
-    Misaka_RGB_Bling_Color_Yellow,
-    Misaka_RGB_Bling_Color_Cyan,
-    Misaka_RGB_Bling_Color_White,
-    Misaka_RGB_Bling_Color_Purple,
-} Misaka_RGB_Bling_Color_Enum;
+    misaka_rgb_color_none = 0,
+    misaka_rgb_color_Red,
+    misaka_rgb_color_Green,
+    misaka_rgb_color_Blue,
+    misaka_rgb_color_Yellow,
+    misaka_rgb_color_Cyan,
+    misaka_rgb_color_White,
+    misaka_rgb_color_Purple,
+} misaka_rgb_color_enum;
 ```
 
-​	在此处添加上所需要的颜色，然后在`Misaka_set_bling_pin`上添加对应颜色的物理层即可。
+​ 在此处添加上所需要的颜色，然后在`misaka_rgb_set_pin`上添加对应颜色的物理层即可。

@@ -14,24 +14,24 @@
  * </table>
  * *********************************************************************************
  */
-#include "Misaka_rgb_bling.h"
+#include "misaka_device/rgb.h"
 
-static Misaka_RGB_Bling_Struct s_Misaka_RGB_Bling = {0};
+static misaka_rgb_struct s_Misaka_RGB_Bling = {0};
 
 /**
  * @brief Misaka_RGB_Bling初始化
  */
-void Misaka_rgb_bling_init(uint16_t base)
+void misaka_rgb_init(uint16_t base)
 {
-    s_Misaka_RGB_Bling.color1 = Misaka_RGB_Bling_Color_None;
-    s_Misaka_RGB_Bling.color2 = Misaka_RGB_Bling_Color_None;
+    s_Misaka_RGB_Bling.color1 = misaka_rgb_color_none;
+    s_Misaka_RGB_Bling.color2 = misaka_rgb_color_none;
     s_Misaka_RGB_Bling.contiune_time = 0;
     s_Misaka_RGB_Bling.color1_cnt = 0;
     s_Misaka_RGB_Bling.period_cnt = 0;
     s_Misaka_RGB_Bling.cnt = 0;
     s_Misaka_RGB_Bling.time_base = base;
     s_Misaka_RGB_Bling.endless_flag = 0;
-    Misaka_set_bling_pin(Misaka_RGB_Bling_Color_None);
+    misaka_rgb_set_pin(misaka_rgb_color_none);
 }
 
 /**
@@ -43,12 +43,12 @@ void Misaka_rgb_bling_init(uint16_t base)
  * @param  cnt              次数
  * @param  endless_flag     无尽模式
  */
-void Misaka_rgb_bling_mode_set(Misaka_RGB_Bling_Color_Enum color1,
-                               Misaka_RGB_Bling_Color_Enum color2,
-                               uint32_t color1_time,
-                               uint32_t color2_time,
-                               uint16_t cnt,
-                               uint8_t endless_flag)
+void misaka_rgb_mode_set(misaka_rgb_color_enum color1,
+                         misaka_rgb_color_enum color2,
+                         uint32_t color1_time,
+                         uint32_t color2_time,
+                         uint16_t cnt,
+                         uint8_t endless_flag)
 {
     s_Misaka_RGB_Bling.color1 = color1;
     s_Misaka_RGB_Bling.color2 = color2;
@@ -62,7 +62,7 @@ void Misaka_rgb_bling_mode_set(Misaka_RGB_Bling_Color_Enum color1,
 /**
  * @brief   周期处理函数
  */
-void Misaka_rgb_bling_cycle_process()
+void misaka_rgb_process()
 {
     if (s_Misaka_RGB_Bling.contiune_time >= 1)
     {
@@ -70,7 +70,7 @@ void Misaka_rgb_bling_cycle_process()
     }
     else
     {
-        Misaka_set_bling_pin(Misaka_RGB_Bling_Color_None);
+        misaka_rgb_set_pin(misaka_rgb_color_none);
     }
 
     if (s_Misaka_RGB_Bling.contiune_time != 0 //总时间未清0
@@ -79,11 +79,11 @@ void Misaka_rgb_bling_cycle_process()
         s_Misaka_RGB_Bling.cnt++;
         if (s_Misaka_RGB_Bling.cnt <= s_Misaka_RGB_Bling.color1_cnt)
         {
-            Misaka_set_bling_pin(s_Misaka_RGB_Bling.color1);
+            misaka_rgb_set_pin(s_Misaka_RGB_Bling.color1);
         }
         else if (s_Misaka_RGB_Bling.cnt > s_Misaka_RGB_Bling.color1_cnt && s_Misaka_RGB_Bling.cnt <= s_Misaka_RGB_Bling.period_cnt)
         {
-            Misaka_set_bling_pin(s_Misaka_RGB_Bling.color2);
+            misaka_rgb_set_pin(s_Misaka_RGB_Bling.color2);
         }
         else
         {

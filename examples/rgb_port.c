@@ -19,69 +19,69 @@
  * @brief 设置Misaka_RGB_Bling的GPIO引脚
  * @param  color            颜色
  */
-#include "Misaka_rgb_bling.h"
+#include "misaka_device/rgb.h"
 
 /**
  * @brief                   设置RBG颜色引脚
  * @param  color            颜色
  */
-void Misaka_set_bling_pin(Misaka_RGB_Bling_Color_Enum color)
+void misaka_rgb_set_pin(misaka_rgb_color_enum color)
 {
     /**
      * @brief 此处为STM32 LL库的示例
      */
     switch (color)
     {
-    case Misaka_RGB_Bling_Color_None:
+    case misaka_rgb_color_none:
     {
         LL_GPIO_ResetOutputPin(RGB_R_GPIO_Port, RGB_R_Pin);
         LL_GPIO_ResetOutputPin(RGB_G_GPIO_Port, RGB_G_Pin);
         LL_GPIO_ResetOutputPin(RGB_B_GPIO_Port, RGB_B_Pin);
     }
     break;
-    case Misaka_RGB_Bling_Color_Red:
+    case misaka_rgb_color_red:
     {
         LL_GPIO_SetOutputPin(RGB_R_GPIO_Port, RGB_R_Pin);
         LL_GPIO_ResetOutputPin(RGB_G_GPIO_Port, RGB_G_Pin);
         LL_GPIO_ResetOutputPin(RGB_B_GPIO_Port, RGB_B_Pin);
     }
     break;
-    case Misaka_RGB_Bling_Color_Green:
+    case misaka_rgb_color_green:
     {
         LL_GPIO_ResetOutputPin(RGB_R_GPIO_Port, RGB_R_Pin);
         LL_GPIO_SetOutputPin(RGB_G_GPIO_Port, RGB_G_Pin);
         LL_GPIO_ResetOutputPin(RGB_B_GPIO_Port, RGB_B_Pin);
     }
     break;
-    case Misaka_RGB_Bling_Color_Blue:
+    case misaka_rgb_color_blue:
     {
         LL_GPIO_ResetOutputPin(RGB_R_GPIO_Port, RGB_R_Pin);
         LL_GPIO_ResetOutputPin(RGB_G_GPIO_Port, RGB_G_Pin);
         LL_GPIO_SetOutputPin(RGB_B_GPIO_Port, RGB_B_Pin);
     }
     break;
-    case Misaka_RGB_Bling_Color_Yellow:
+    case misaka_rgb_color_yellow:
     {
         LL_GPIO_SetOutputPin(RGB_R_GPIO_Port, RGB_R_Pin);
         LL_GPIO_SetOutputPin(RGB_G_GPIO_Port, RGB_G_Pin);
         LL_GPIO_ResetOutputPin(RGB_B_GPIO_Port, RGB_B_Pin);
     }
     break;
-    case Misaka_RGB_Bling_Color_Cyan:
+    case misaka_rgb_color_cyan:
     {
         LL_GPIO_ResetOutputPin(RGB_R_GPIO_Port, RGB_R_Pin);
         LL_GPIO_SetOutputPin(RGB_G_GPIO_Port, RGB_G_Pin);
         LL_GPIO_SetOutputPin(RGB_B_GPIO_Port, RGB_B_Pin);
     }
     break;
-    case Misaka_RGB_Bling_Color_White:
+    case misaka_rgb_color_white:
     {
         LL_GPIO_SetOutputPin(RGB_R_GPIO_Port, RGB_R_Pin);
         LL_GPIO_SetOutputPin(RGB_G_GPIO_Port, RGB_G_Pin);
         LL_GPIO_SetOutputPin(RGB_B_GPIO_Port, RGB_B_Pin);
     }
     break;
-    case Misaka_RGB_Bling_Color_Purple:
+    case misaka_rgb_color_purple:
     {
         LL_GPIO_SetOutputPin(RGB_R_GPIO_Port, RGB_R_Pin);
         LL_GPIO_ResetOutputPin(RGB_G_GPIO_Port, RGB_G_Pin);
