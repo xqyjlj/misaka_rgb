@@ -1,5 +1,5 @@
 /**
- * @file Misaka_rgb_bling_port.c
+ * @file rgb_port.c
  * @brief
  * @author xqyjlj (xqyjlj@126.com)
  * @version 0.0
@@ -15,9 +15,10 @@
  * *********************************************************************************
  */
 #include "misaka_device/rgb.h"
+
 /**
- * @brief                   设置RBG颜色引脚
- * @param  color            颜色
+ * @brief 设置RGB引脚
+ * @param color 颜色
  */
 void misaka_rgb_set_pin(misaka_rgb_color_enum color)
 {
