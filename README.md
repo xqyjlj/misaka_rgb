@@ -41,7 +41,7 @@ _初始化函数_
 ### 设置工作模式
 
 ```C
-void misaka_rgb_mode_set(misaka_rgb_color_enum color1,
+void misaka_rgb_set_mode(misaka_rgb_color_enum color1,
                            misaka_rgb_color_enum color2,
                            uint32_t color1_time,
                            uint32_t color2_time,

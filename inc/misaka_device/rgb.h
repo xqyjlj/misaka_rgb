@@ -33,7 +33,7 @@ typedef enum
     misaka_rgb_color_purple,                /**< 紫 */
 } misaka_rgb_color_enum;
 
-typedef struct
+struct misaka_rgb_struct
 {
     misaka_rgb_color_enum color1;           /**< 颜色1 */
     misaka_rgb_color_enum color2;			/**< 颜色2 */
@@ -43,7 +43,9 @@ typedef struct
     uint16_t cnt;							/**< 闪烁计数器 */
     uint8_t endless_flag;					/**< 无尽模式 */
     uint16_t time_base;						/**< 时间基数 */
-} misaka_rgb_struct;
+} ;
+
+typedef struct misaka_rgb_struct misaka_rgb_t;
 
 /**
  * @brief 设置RGB引脚
@@ -66,7 +68,7 @@ void misaka_rgb_init(uint16_t time_base);
  * @param cnt 次数
  * @param endless_flag 无尽模式
  */
-void misaka_rgb_mode_set(misaka_rgb_color_enum color1,
+void misaka_rgb_set_mode(misaka_rgb_color_enum color1,
                          misaka_rgb_color_enum color2,
                          uint32_t color1_time,
                          uint32_t color2_time,

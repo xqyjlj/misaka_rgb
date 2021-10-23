@@ -17,7 +17,7 @@
  */
 #include "misaka_device/rgb.h"
 
-static misaka_rgb_struct s_misaka_rgb = {0};
+misaka_rgb_t s_misaka_rgb = {0};
 
 /**
  * @brief rgb初始化
@@ -45,7 +45,7 @@ void misaka_rgb_init(uint16_t base)
  * @param cnt 次数
  * @param endless_flag 无尽模式
  */
-void misaka_rgb_mode_set(misaka_rgb_color_enum color1,
+void misaka_rgb_set_mode(misaka_rgb_color_enum color1,
                          misaka_rgb_color_enum color2,
                          uint32_t color1_time,
                          uint32_t color2_time,
