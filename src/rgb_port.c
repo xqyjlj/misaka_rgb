@@ -5,6 +5,7 @@
  * @version 0.0
  * @date 2021-08-02
  * @copyright Copyright © 2020-2021 xqyjlj<xqyjlj@126.com>
+ * @SPDX-License-Identifier: Apache-2.0
  *
  * *********************************************************************************
  * @par ChangeLog:

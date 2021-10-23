@@ -5,6 +5,7 @@
  * @version 0.0
  * @date 2021-09-07
  * @copyright Copyright © 2020-2021 xqyjlj<xqyjlj@126.com>
+ * @SPDX-License-Identifier: Apache-2.0
  *
  * *********************************************************************************
  * @par ChangeLog:
@@ -16,14 +17,14 @@
  */
 
 /**
- * @brief 设置Misaka_RGB_Bling的GPIO引脚
- * @param  color            颜色
+ * @brief 设置rgb的GPIO引脚
+ * @param color 颜色
  */
 #include "misaka_device/rgb.h"
 
 /**
- * @brief                   设置RBG颜色引脚
- * @param  color            颜色
+ * @brief 设置RBG颜色引脚
+ * @param color 颜色
  */
 void misaka_rgb_set_pin(misaka_rgb_color_enum color)
 {
